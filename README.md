@@ -1,4 +1,3 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=24070770)
 <!--
 
 author:   Volker Göhler
@@ -423,9 +422,32 @@ Hier bitte den Code aus `robots_exercise` in ein UML Diagramm überführen.
 
 ```text @plantUML
 @startuml
+class Roboter{
+    + Name : string 
+    + Typ : string
+    + Energielevel : int
 
-Arbeiten Sie hier !!!
+    + SpeichernAlsCSV(string) : void
+    + static LadenAusCSV(string) : Roboter
+    + static SpeichernAlsJSON (string) : void
+    + static LadenAusJSON(string) : Roboter
+    + virtual GetStatus() : string
+    + virtual Activate() : void
+}
 
+class Lieferroboter{
+    + GetStatus() : string
+    + Lieferkapazität : int 
+}
+
+interface ISerializer{
+    + SpeichernAlsJSON(string) : void
+    + SpeichernAlsCSV(string) : void
+    + static abstract Roboter LadenAusJSON(string)
+    + static abstract Roboter LadenAusCSV(string)
+}
+Lieferroboter --|> Roboter
+Roboter ..|> ISerializer
 @enduml
 ```
 @plantUML.eval(png)
