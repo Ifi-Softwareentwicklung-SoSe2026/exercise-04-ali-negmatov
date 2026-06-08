@@ -428,11 +428,11 @@ class Roboter{
     + Energielevel : int
 
     + SpeichernAlsCSV(string) : void
-    {static} + LadenAusCSV(string) : Roboter
-    {static}+ SpeichernAlsJSON (string) : void
-    + {static}LadenAusJSON(string) : Roboter
-    + GetStatus() : string
-    + Activate() : void
+    + static LadenAusCSV(string) : Roboter
+    + static SpeichernAlsJSON (string) : void
+    + static LadenAusJSON(string) : Roboter
+    + virtual GetStatus() : string
+    + virtual Activate() : void
 }
 
 class Lieferroboter{
@@ -441,10 +441,10 @@ class Lieferroboter{
 }
 
 interface ISerializer{
-    +SpeichernAlsJSON(string) : void
-    {static} +SpeichernAlsCSV(string) : void
-     {static} + abstract Roboter LadenAusJSON(string)
-    + {static} abstract Roboter LadenAusCSV(string)
+    + SpeichernAlsJSON(string) : void
+    + SpeichernAlsCSV(string) : void
+    + static abstract Roboter LadenAusJSON(string)
+    + static abstract Roboter LadenAusCSV(string)
 }
 Lieferroboter --|> Roboter
 Roboter ..|> ISerializer
